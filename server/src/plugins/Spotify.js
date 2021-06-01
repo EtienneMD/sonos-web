@@ -235,6 +235,7 @@ class Spotify {
   async getArtistAlbums(id) {
     try {
       const data = await this.spotifyApi.getArtistAlbums(id);
+      const artist = await this.spotifyApi.getArtist(id);
       const items = data.body.items.map(item => ({
         title: item.name,
         uri: item.uri,
@@ -246,6 +247,7 @@ class Spotify {
         items,
         uri: data.body.items[0].artists[0].uri,
         name: data.body.items[0].artists[0].name,
+        artistImageURL: artist.body.images[0].url,
       };
     } catch (error) {
       throw error;

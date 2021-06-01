@@ -11,7 +11,12 @@
     <ErrorView v-if="error" absolute :message="errorMessage"></ErrorView>
     <LoadingView v-else-if="loading" absolute message="Loading..."></LoadingView>
     <v-layout row wrap v-else>
-      <div class="artist-title display-3 pb-3">
+      <v-img
+        class="mx-auto"
+        max-width="300"
+        :src="artist.artistImageURL">
+      </v-img>
+      <div class="artist-title display-3 py-3">
         {{ artist.name }}
       </div>
       <v-flex xs12>
